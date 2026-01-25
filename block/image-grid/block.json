@@ -1,0 +1,16 @@
+{
+    "name": "acf/image-grid",
+    "title": "Image Grid",
+    "description": "A custom Image Grid that uses ACF fields.",
+    "style": [ "file:./banner.css" ],
+    "category": "den-dev",
+    "icon": "admin-comments",
+    "keywords": ["image", "grid"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "image-grid.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

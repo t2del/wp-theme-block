@@ -1,0 +1,16 @@
+{
+    "name": "acf/accordion",
+    "title": "Accordion",
+    "description": "A custom Accordion that uses ACF fields.",
+    "style": [ "file:./banner.css" ],
+    "category": "den-dev",
+    "icon": "admin-comments",
+    "keywords": ["questions", "accordion"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "accordion.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

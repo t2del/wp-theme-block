@@ -1,0 +1,16 @@
+{
+    "name": "acf/faqs",
+    "title": "FAQs",
+    "description": "A custom FAQs that uses ACF fields.",
+    "style": [ "file:./banner.css" ],
+    "category": "den-dev",
+    "icon": "admin-comments",
+    "keywords": ["questions", "faqs"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "faqs.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

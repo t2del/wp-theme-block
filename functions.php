@@ -1,0 +1,168 @@
+<?php
+	/**
+	 * denn functions and definitions
+	 * For more information on hooks, actions, and filters, see http://codex.wordpress.org/Plugin_API.
+ 	 * @package 	WordPress
+ 	 * @subpackage 	denn
+ 	 * @since 		denn 1.0
+	 */
+	
+	define("INC_PATH", get_template_directory().'/includes');
+	define("ASSETS_PATH", get_template_directory_uri().'/assets');
+	define("JS_PATH", ASSETS_PATH.'/js');
+	define("CSS_PATH", ASSETS_PATH.'/css');
+	define("IMAGES_PATH", ASSETS_PATH.'/images');
+	
+	/* ========================================================================================================================
+	Required external files
+	======================================================================================================================== */
+	
+	// Utilities
+	//require_once INC_PATH.'/denn-utilities.php';
+	
+	// Register Menus
+	function register_my_menus() {
+	  register_nav_menus(
+		array(
+		  'header-menu' => __( 'Header Menu' ),
+		  'footer-menu' => __( 'Footer Menu' )
+		)
+	  );
+	}
+	
+	add_action( 'init', 'register_my_menus' );
+
+	// Enqueue Scripts and Styles
+	function denn_scripts() {
+		// wp_enqueue_script('tailwind-script', 'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4');
+		//wp_enqueue_script('glide-script', 'https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js');
+		
+		wp_enqueue_script('glide-script', JS_PATH.'/tailwind/glide.js');
+		wp_enqueue_script('tailwind-script', JS_PATH.'/tailwind/tailwind.js');
+		// wp_enqueue_script('main-script', JS_PATH.'/main.js');
+    }
+	add_action('wp_enqueue_scripts', 'denn_scripts');
+
+	// Register Sidebar
+	require INC_PATH.'/reg-sidebar.php';
+
+	// Ajax Forms
+
+	// Block Register
+	require INC_PATH.'/register-blocks.php';
+
+
+	// Dequeue scripts
+	require INC_PATH.'/dequeue-scripts.php';
+
+	// Custom PHP Blocks
+	require INC_PATH.'/custom-blocks.php';
+		
+	/* ========================================================================================================================
+	Theme specific settings
+	======================================================================================================================== */
+
+	// Add support for Block Styles.
+	//add_theme_support( 'wp-block-styles' );
+	add_theme_support('post-thumbnails');
+	add_theme_support( 'title-tag' );
+
+	function themename_custom_logo_setup() {
+		$defaults = array(
+			'height'               => 70,
+			'width'                => 300,
+			'flex-height'          => true,
+			'flex-width'           => true,			
+		);
+		add_theme_support( 'custom-logo', $defaults );
+	}
+	add_action( 'after_setup_theme', 'themename_custom_logo_setup' );
+
+	/* ========================================================================================================================
+	Actions and Filters
+	===============================================================================================================================================================================================================================================
+	Author Scripts
+	======================================================================================================================== */
+	
+
+// // //[get_layout layout="nav-bar" my_variable="some value" var1="some value" var2="some value"]
+function include_layouts( $args ) {
+    $path = get_stylesheet_directory_uri();
+    $layout = isset( $args['layout'] ) ? 'layouts/' . $args['layout'] . '.php' : '';
+    $check_file = dirname( __FILE__ ) . DIRECTORY_SEPARATOR . "{$layout}";
+
+    $myVariable = isset( $args['my_variable'] ) ? $args['my_variable'] : '';
+    $var1 = isset( $args['var1'] ) ? $args['var1'] : '';
+    $var2 = isset( $args['var2'] ) ? $args['var2'] : '';
+
+    ob_start();
+    if ( ! empty( $layout ) && file_exists( $check_file ) ) {
+        include $layout;
+    } else {
+        echo '<strong>Invalid Layout!</strong>';
+    }
+    return ob_get_clean();   
+}
+add_shortcode( 'get_layout', 'include_layouts' );
+
+function debug( $x ){
+    echo '<pre>';
+    var_dump($x);
+    echo '</pre>';
+}
+
+
+
+function wpb_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'wpb_login_logo_url' );
+
+
+// Add a custom link before the last item in Yoast SEO breadcrumbs
+function custom_add_custom_link($links) {
+    // Check if there are at least two items in the breadcrumb trail
+	$new_link = array();
+    if (is_singular( 'career' )) {
+        // Get the URL and label for your custom link
+		$career_id = 16402; // Career page ID
+        $custom_link_url = get_the_permalink($career_id); // Replace with your custom link URL
+        $custom_link_label = get_the_title($career_id); // Replace with your custom link label
+
+		$new_link = array(
+			array(
+				"url" => $links[0]['url'],
+				"text" => $links[0]['text'],
+				"id" => $links[0]['id'],
+			),
+			array(
+				"url" => $custom_link_url,
+				"text" => $custom_link_label,
+				"id" => $career_id,
+			),
+			array(
+				"url" => $links[1]['url'],
+				"text" => $links[1]['text'],
+				"id" => $links[1]['id'],
+			),
+		);
+    }
+    return $new_link;
+}
+add_filter('wpseo_breadcrumb_links', 'custom_add_custom_link');
+
+function so_37823371_menu_item_class( $classes, $item, $args, $depth ){
+    $classes[] = 'flex items-stretch';
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'so_37823371_menu_item_class', 10, 4 );
+
+function add_menu_link_class( $atts, $item, $args, $depth ) {
+    $atts['class'] = 'flex items-center gap-2 py-2 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-4'; // Add your custom class name here
+
+    // Append to existing classes if necessary, instead of overwriting
+    // $atts['class'] = (!empty($atts['class'])) ? $atts['class'] . ' nav-link' : 'nav-link';
+
+    return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 10, 4 );

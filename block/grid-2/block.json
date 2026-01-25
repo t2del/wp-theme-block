@@ -1,0 +1,16 @@
+{
+    "name": "acf/grid-2",
+    "title": "Grid 2",
+    "description": "A custom Grid 2 that uses ACF fields.",
+    "style": [ "file:./banner.css" ],
+    "category": "den-dev",
+    "icon": "admin-comments",
+    "keywords": ["image", "grid"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "grid-2.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}
