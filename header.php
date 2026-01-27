@@ -27,7 +27,7 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
         <img src="<?php echo esc_url( $image[0] ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-8 w-auto" />
         </a>
       
-        <ul class="md:hidden lg:flex items-center space-x-4 ">
+        <ul class="hidden lg:flex items-center space-x-4 ">
            <?php 
                 wp_nav_menu(
                     array(
