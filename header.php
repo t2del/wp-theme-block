@@ -27,7 +27,7 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
         <img src="<?php echo esc_url( $image[0] ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-8 w-auto" />
         </a>
       
-        <ul class="hidden md:flex items-center space-x-8 ">
+        <ul class="md:hidden lg:flex items-center space-x-4 ">
            <?php 
                 wp_nav_menu(
                     array(
@@ -43,15 +43,18 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
             ?>   
         </ul>
        
-       <button class="md:inline hidden bg-white hover:bg-gray-50 border border-gray-300  px-5 py-2 rounded-full active:scale-95 transition-all">Get started</button>
+        <div class="flex items-center justify-between gap-2">
+            <button class="md:inline hidden bg-white hover:bg-gray-50 border border-gray-300  px-5 py-2 rounded-full active:scale-95 transition-all">Get started</button>
 
-       <button aria-label="menu-btn" type="button" class="menu-btn inline-block md:hidden active:scale-90 transition">
+       <button aria-label="menu-btn" type="button" class="menu-btn inline-block lg:hidden active:scale-90 transition">
            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                <path d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z"/>
            </svg>
        </button>
+        </div>   
+       
 
-       <div class="mobile-menu absolute top-[70px] left-0 w-full bg-white shadow-sm p-6 hidden md:hidden animate-slide-in-down">
+       <div class="mobile-menu absolute top-[70px] left-0 w-full bg-white shadow-sm p-6 hidden lg:hidden animate-slide-in-down">
            <ul class="flex flex-col space-y-4 text-lg">
                <?php 
                   wp_nav_menu(
@@ -76,16 +79,3 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
 </div>
 </header>
 <!-- End Navbar with Topbar-->
-
-
-
-<script>
-   const menuButtons = document.querySelectorAll('.menu-btn');
-   const mobileMenus = document.querySelectorAll('.mobile-menu');
-
-   menuButtons.forEach((btn, index) => {
-       btn.addEventListener('click', () => {
-           mobileMenus[index].classList.toggle('hidden');
-       });
-   });
-</script>

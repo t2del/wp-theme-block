@@ -34,12 +34,13 @@
 
 	// Enqueue Scripts and Styles
 	function denn_scripts() {
+		wp_enqueue_script('main-script', JS_PATH.'/main.js');
 		// wp_enqueue_script('tailwind-script', 'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4');
 		//wp_enqueue_script('glide-script', 'https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js');
 		
 		wp_enqueue_script('glide-script', JS_PATH.'/tailwind/glide.js');
 		wp_enqueue_script('tailwind-script', JS_PATH.'/tailwind/tailwind.js');
-		// wp_enqueue_script('main-script', JS_PATH.'/main.js');
+		
     }
 	add_action('wp_enqueue_scripts', 'denn_scripts');
 

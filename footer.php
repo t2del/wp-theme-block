@@ -72,6 +72,16 @@
       </footer>
     
     <?php wp_footer(); ?>
+    <script>
+      const menuButtons = document.querySelectorAll('.menu-btn');
+      const mobileMenus = document.querySelectorAll('.mobile-menu');
 
+      menuButtons.forEach((btn, index) => {
+          btn.addEventListener('click', () => {
+            console.log('Button clicked:', index);
+              mobileMenus[index].classList.toggle('hidden');
+          });
+      });
+              </script>
     </body>
 </html>
