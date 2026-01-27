@@ -13,34 +13,27 @@
  */
 
 
-// Create class attribute allowing for custom "className" and "align" values.
-$class_name = 'image-text-block';
-if (!empty($block['className'])) {
-    $class_name .= ' ' . $block['className'];
-}
-if (!empty($block['align'])) {
-    $class_name .= ' align' . $block['align'];
-}
 
-$classes = explode(' ', $class_name);
 
-$header     = get_field( 'header' );
-$faqs       = get_field( 'faqs' ); // ACF's images.
+$header          = get_field( 'header' );
+$accordion       = get_field( 'accordion' ); 
+// debug($accordion);
 ?>
 
-<section id="accordion-<?php echo $block['id']; ?>" class="<?php echo esc_attr($class_name); ?> ">
+<section id="accordion-<?php echo $block['id']; ?>">
     <div class="container">
         <?php if ($header) : ?>
             <div class="color-primary-teal text-center">
-                <h2><?php echo $header; ?></h2>
+                <h2 class="text-xl font-bold mb-3"><?php echo $header; ?></h2>
             </div>
         <?php endif; ?>
-        <?php if ($faqs) : ?>
+        
+        <?php if ($accordion) : ?>
             <div class="accordion" id="accordion-<?php echo $block['id']; ?>-accordion">
-                <?php foreach ($faqs as $counter => $faq) : //debug($grids['right']['image']); ?>
+                <?php foreach ($accordion as $counter => $accordion_set) : //debug($grids['right']['image']); ?>
                     <details class="group [&amp;_summary::-webkit-details-marker]:hidden rounded-lg border border-gray-200 m-2 relative">
-                        <summary class="flex cursor-pointer items-center justify-between gap-4 rounded-lg  px-4 py-3 font-medium text-gray-900 hover:bg-gray-50">
-                            <span><?php echo $faq['question']; ?></span>
+                        <summary class="flex cursor-pointer items-center justify-between gap-4 rounded-lg  px-4 py-3 font-medium text-gray-900 hover:bg-gray-50 text-lg font-bold">
+                            <span><?php echo $accordion_set['question']; ?></span>
 
                             <svg class="size-5 shrink-0 transition-transform duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -48,8 +41,8 @@ $faqs       = get_field( 'faqs' ); // ACF's images.
                         </summary>
 
                         <div class="p-4">
-                            <p class="text-gray-700">
-                                <?php echo $faq['answers']; ?>
+                            <p class="text-gray-700 max-w-3xl mx-auto">
+                                <?php echo $accordion_set['answers']; ?>
                             </p>
                         </div>
                     </details>
@@ -57,8 +50,4 @@ $faqs       = get_field( 'faqs' ); // ACF's images.
             </div>
         <?php endif; ?>
     </div>
-    <div class="space-y-2">
-  
-  
-</div>
 </section>

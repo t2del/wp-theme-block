@@ -8,7 +8,7 @@
 // Load values and assign defaults.
 
 $images            = get_field( 'images' );
-
+$max_height       = get_field( 'max_height' ) ? get_field( 'max_height' ) : '50'; 
 // Support custom "anchor" values.
 $anchor = '';
 if ( ! empty( $block['anchor'] ) ) {
@@ -31,10 +31,10 @@ $style  = implode( '; ', $styles );
 ?>
 
 <!-- Component: Slider with indicators & controls inside -->
-<div class="relative w-full glide-03 max-h-[50vh]" >
+<div class="relative w-full glide-03 max-h-[<?php echo $max_height; ?>vh]" >
     <!-- Slides -->
     <div class="overflow-hidden h-full" data-glide-el="track">
-        <ul class="relative w-full h-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] max-h-[50vh]">
+        <ul class="relative w-full h-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] max-h-[<?php echo $max_height; ?>vh]">
             <?php foreach($images as $counter => $images_item)  { ?> 
                 <li class="h-full"><img src="<?php echo esc_url($images_item['url']); ?>" alt="<?php echo "counter-". $counter; ?>" class="w-full h-full object-cover" /></li>
             <?php } ?>

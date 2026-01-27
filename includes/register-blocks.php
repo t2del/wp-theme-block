@@ -13,12 +13,8 @@ function register_acf_blocks() {
      *
      * @link https://developer.wordpress.org/reference/functions/register_block_type/
      */
-    register_block_type( get_template_directory() . '/block/testimonial' );
-    register_block_type( get_template_directory() . '/block/banner' );
+    register_block_type( get_template_directory() . '/block/quote' );
     register_block_type( get_template_directory() . '/block/banner-slider' );
-    register_block_type( get_template_directory() . '/block/banner-carousel' );
-    register_block_type( get_template_directory() . '/block/image-grid' );
-    register_block_type( get_template_directory() . '/block/faqs' );
     register_block_type( get_template_directory() . '/block/accordion' );
 }
 // Here we call our register_acf_blocks() function on init.
@@ -33,8 +29,8 @@ function admin_enqueue()
     global $pagenow;
 
     if (($pagenow === 'post.php' || $pagenow === 'post-new.php') && in_array(get_post_type(), ['page', 'post'])) {
-        wp_enqueue_style('admin-style', get_template_directory_uri() . '/assets/less/block.css', array());
-		wp_enqueue_style('fhg-style', ASSETS_PATH.'/less/block.css');
+        wp_enqueue_style('admin-style', get_template_directory_uri() . '/assets/css/admin_style.css', array());
+		// wp_enqueue_style('fhg-style', ASSETS_PATH.'/less/block.css');
         wp_enqueue_script('glide-script', JS_PATH.'/tailwind/glide.js');
 		wp_enqueue_script('tailwind-script', JS_PATH.'/tailwind/tailwind.js');
     }
