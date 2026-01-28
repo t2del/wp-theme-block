@@ -1,0 +1,16 @@
+{
+    "name": "acf/hero-banner-slider",
+    "title": "Hero Banner Slider",
+    "description": "A custom Hero Banner Slider that uses ACF fields.",
+    "style": [ "file:./banner.css" ],
+    "category": "den-dev",
+    "icon": "admin-comments",
+    "keywords": ["hero", "banner", "slider"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "hero-banner-slider.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

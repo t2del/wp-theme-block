@@ -1,0 +1,16 @@
+{
+    "name": "acf/hero-banner",
+    "title": "Hero Banner",
+    "description": "A custom Hero Banner that uses ACF fields.",
+    "style": [ "file:./banner.css" ],
+    "category": "den-dev",
+    "icon": "admin-comments",
+    "keywords": ["hero", "banner"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "hero-banner.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}
