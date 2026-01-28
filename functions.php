@@ -120,50 +120,19 @@ function wpb_login_logo_url() {
 add_filter( 'login_headerurl', 'wpb_login_logo_url' );
 
 
-// Add a custom link before the last item in Yoast SEO breadcrumbs
-function custom_add_custom_link($links) {
-    // Check if there are at least two items in the breadcrumb trail
-	$new_link = array();
-    if (is_singular( 'career' )) {
-        // Get the URL and label for your custom link
-		$career_id = 16402; // Career page ID
-        $custom_link_url = get_the_permalink($career_id); // Replace with your custom link URL
-        $custom_link_label = get_the_title($career_id); // Replace with your custom link label
-
-		$new_link = array(
-			array(
-				"url" => $links[0]['url'],
-				"text" => $links[0]['text'],
-				"id" => $links[0]['id'],
-			),
-			array(
-				"url" => $custom_link_url,
-				"text" => $custom_link_label,
-				"id" => $career_id,
-			),
-			array(
-				"url" => $links[1]['url'],
-				"text" => $links[1]['text'],
-				"id" => $links[1]['id'],
-			),
-		);
-    }
-    return $new_link;
-}
-add_filter('wpseo_breadcrumb_links', 'custom_add_custom_link');
-
+// Add custom class to menu li items
 function so_37823371_menu_item_class( $classes, $item, $args, $depth ){
     $classes[] = 'flex items-stretch';
     return $classes;
 }
 add_filter( 'nav_menu_css_class', 'so_37823371_menu_item_class', 10, 4 );
 
+
+// Add custom class to menu a items
 function add_menu_link_class( $atts, $item, $args, $depth ) {
     $atts['class'] = 'flex items-center gap-2 py-2 transition-colors duration-300 hover:text-emerald-500 focus:text-emerald-600 focus:outline-none focus-visible:outline-none lg:px-4'; // Add your custom class name here
-
     // Append to existing classes if necessary, instead of overwriting
     // $atts['class'] = (!empty($atts['class'])) ? $atts['class'] . ' nav-link' : 'nav-link';
-
     return $atts;
 }
 add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 10, 4 );

@@ -15,13 +15,28 @@ $custom_logo_id = get_theme_mod( 'custom_logo' );
 $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
 
 ?>
-<!-- Header -->
-<header class="relative z-20 w-full border-b shadow-lg  border-slate-200 bg-white/90 shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden sticky top-0">
-  <div class="text-sm text-white w-full">
-    <div class="text-center font-medium py-2 bg-gradient-to-r from-violet-500 via-[#9938CA] to-[#E0724A]">
+<!-- Topbar -->
+    <div class="bg-gray-100 py-2 border-b text-sm text-white w-full">
+        <div class="container mx-auto px-4 flex justify-between items-center text-sm text-gray-600">
+            <div class="flex space-x-4">
+                <span>📞 +65 8816 1244</span>
+                <span>📧 info@urban-rehab.org</span>
+            </div>
+            <div class="hidden md:block">
+                <span>Mon–Fri: 08:30 – 20:00 | Sat: 08:30 – 15:00</span>
+            </div>
+        </div>
+    </div>
+    <div class="text-center font-medium py-2 bg-gradient-to-r from-violet-500 via-[#9938CA] to-[#E0724A] text-sm text-white w-full">
        <p>Exclusive Price Drop! Hurry, <span class="underline underline-offset-2">Offer Ends Soon!</span></p>
     </div>
-   <nav class="relative h-[70px] flex items-center justify-between px-4 md:px-4 lg:px-4 xl:px-4 py-4 bg-white text-gray-900 transition-all shadow">
+<!-- Topbar -->
+
+<!-- Header -->
+<header class="relative z-20 w-full border-b shadow-lg  border-slate-200 bg-white/90 shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden sticky top-0 shadow bg-white">
+  <div class="text-sm text-white max-w-[1600px!important] mx-auto">
+    
+   <nav class="relative h-[70px] flex items-center justify-between px-4 md:px-4 lg:px-4 xl:px-4 py-4  text-gray-900 transition-all ">
 
         <a id="WindUI" aria-label="WindUI logo" aria-current="page" class="flex items-center gap-2 py-3 text-lg whitespace-nowrap focus:outline-none " href="<?php echo esc_url( home_url( '/' ) ); ?>">
         <img src="<?php echo esc_url( $image[0] ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-8 w-auto" />
@@ -46,10 +61,10 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
         <div class="flex items-center justify-between gap-2">
             <button class="md:inline hidden bg-white hover:bg-gray-50 border border-gray-300  px-5 py-2 rounded-full active:scale-95 transition-all">Get started</button>
 
-       <button aria-label="menu-btn" type="button" class="menu-btn inline-block lg:hidden active:scale-90 transition">
-           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-               <path d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z"/>
-           </svg>
+            <button aria-label="menu-btn" type="button" class="menu-btn inline-block lg:hidden active:scale-90 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+                    <path d="M3 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2zm0 7a1 1 0 1 0 0 2h24a1 1 0 1 0 0-2z"/>
+                </svg>
        </button>
         </div>   
        
@@ -62,8 +77,7 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
                       //'theme_location'  => 'menu-1', // elementor
                       'theme_location'  => 'header-menu', // custom
                       'container'       => false,
-                      'menu_class'      => 'menu-wrapper',
-                      
+                      'menu_class'      => 'menu-wrapper',                   
                       'items_wrap'      => '%3$s',
                       'fallback_cb'     => false,
                       )
