@@ -78,10 +78,33 @@
 
       menuButtons.forEach((btn, index) => {
           btn.addEventListener('click', () => {
-            console.log('Button clicked:', index);
+  
               mobileMenus[index].classList.toggle('hidden');
+              menuButtons[index].classList.toggle('opened');
           });
       });
-              </script>
+      const submenuItems = document.querySelectorAll('li.menu-item-has-children');
+
+      submenuItems.forEach((item) => {
+        item.addEventListener('click', (e) => {
+          if (window.innerWidth < 1024) {
+            e.preventDefault();
+            const submenu = item.querySelector('ul.sub-menu');
+            if (submenu) {
+              submenu.classList.toggle('hidden');
+              submenu.classList.toggle('absolute');
+              submenu.classList.toggle('bg-white');
+              submenu.classList.toggle('shadow-lg');
+              submenu.classList.toggle('rounded-lg');
+              submenu.classList.toggle('border');
+              submenu.classList.toggle('border-gray-100');
+              submenu.classList.toggle('w-full');
+              submenu.classList.toggle('px-2');
+              
+            }
+          }
+        });
+      });
+      </script>
     </body>
 </html>

@@ -50,9 +50,9 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
                     'theme_location'  => 'header-menu', // custom
                     'container'       => false,
                     'menu_class'      => 'menu-wrapper',
-                    
                     'items_wrap'      => '%3$s',
                     'fallback_cb'     => false,
+                    'walker'          => new Custom_Submenu_Walker(),
                     )
                 );
             ?>   
@@ -73,15 +73,16 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
            <ul class="flex flex-col space-y-4 text-lg">
                <?php 
                   wp_nav_menu(
-                      array(
-                      //'theme_location'  => 'menu-1', // elementor
-                      'theme_location'  => 'header-menu', // custom
-                      'container'       => false,
-                      'menu_class'      => 'menu-wrapper',                   
-                      'items_wrap'      => '%3$s',
-                      'fallback_cb'     => false,
-                      )
-                  );
+                    array(
+                    //'theme_location'  => 'menu-1', // elementor
+                    'theme_location'  => 'header-menu', // custom
+                    'container'       => false,
+                    'menu_class'      => 'menu-wrapper',
+                    'items_wrap'      => '%3$s',
+                    'fallback_cb'     => false,
+                    'walker'          => new Custom_Submenu_Walker(),
+                    )
+                );
               ?>   
            </ul>
 

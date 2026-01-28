@@ -122,7 +122,7 @@ add_filter( 'login_headerurl', 'wpb_login_logo_url' );
 
 // Add custom class to menu li items
 function so_37823371_menu_item_class( $classes, $item, $args, $depth ){
-    $classes[] = 'flex items-stretch';
+    $classes[] = 'cs-li relative group';
     return $classes;
 }
 add_filter( 'nav_menu_css_class', 'so_37823371_menu_item_class', 10, 4 );
@@ -136,3 +136,33 @@ function add_menu_link_class( $atts, $item, $args, $depth ) {
     return $atts;
 }
 add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 10, 4 );
+
+
+
+class Custom_Submenu_Walker extends Walker_Nav_Menu {
+    /**
+     * Starts the list before the elements are added.
+     *
+     * @see Walker_Nav_Menu::start_lvl()
+     *
+     * @param string $output Passed by reference. Used to append additional content.
+     * @param int    $depth Depth of menu item. Used for padding.
+     * @param array  $args An array of arguments. @see wp_nav_menu()
+     */
+    public function start_lvl( &$output, $depth = 0, $args = null ) {
+        if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
+            $t = '';
+            $n = '';
+        } else {
+            $t = "\t";
+            $n = "\n";
+        }
+        $indent = str_repeat( $t, $depth );
+        
+        // --- Custom Class Insertion Point ---
+        $classes = array( 'sub-menu', ' absolute top-full left-0 mt-0 w-48 bg-white shadow-lg rounded-lg border border-gray-100 hidden group-hover:block z-50 py-1' ); // Add your desired classes here
+        $class_names = implode( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
+        
+        $output .= "{$n}{$indent}<ul class=\"$class_names\">{$n}";
+    }
+}
