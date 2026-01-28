@@ -1,0 +1,2 @@
+Must install SCF or ACF pro
+Then upload json file
