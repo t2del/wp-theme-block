@@ -15,13 +15,13 @@
 
 
 $hero_banner_slider = get_field( 'hero_banner_slider' );
-$header          = get_field( 'header' );
-$banner       = get_field( 'banner' ); 
+// $header          = get_field( 'header' );
+// $banner       = get_field( 'banner' ); 
 $max_height       = get_field( 'max_height' ) ? get_field( 'max_height' ) : '50';
-$header       = get_field( 'header' ) ? get_field( 'header' ) : 'Main Heading';
-$sub_header      = get_field( 'sub_header' ) ? get_field( 'sub_header' ) : 'Sub Heading';
-$cta_button     = get_field( 'cta_button' );
-$text_alignment = get_field( 'text_alignment' ) ? get_field( 'text_alignment' ) : 'left';
+// $header       = get_field( 'header' ) ? get_field( 'header' ) : 'Main Heading';
+// $sub_header      = get_field( 'sub_header' ) ? get_field( 'sub_header' ) : 'Sub Heading';
+// $cta_button     = get_field( 'cta_button' );
+// $text_alignment = get_field( 'text_alignment' ) ? get_field( 'text_alignment' ) : 'left';
 
 ?>
 
@@ -36,10 +36,10 @@ $text_alignment = get_field( 'text_alignment' ) ? get_field( 'text_alignment' ) 
                     <div class="absolute inset-0 opacity-50 bg-black" >
                         <img src="<?= $slide['banner']['url'];?>" class="w-full h-[<?php echo $max_height; ?>vh] object-cover"  alt="<?php echo "counter-". $counter; ?> <?php echo ($slide['banner']['alt']) ? $slide['banner']['alt'] : 'Hero Banner Image';?>">
                     </div>
-                    <div class="container mx-auto px-4 relative z-999 text-white text-<?php echo $text_alignment; ?> flex flex-col items-center justify-center h-[<?php echo $max_height; ?>vh]">
+                    <div class="container mx-auto px-4 relative z-999 text-white flex flex-col items-<?php echo $slide['text_alignment']; ?> justify-center h-[<?php echo $max_height; ?>vh]">
                         <h1 class="text-4xl md:text-5xl font-bold mb-6"><?php echo $slide['header']; ?></h1>
-                        <p class="text-xl mb-8"><?php echo $slide['sub_header'] ; ?></p>
-                        <div class="flex space-x-4 justify-<?php echo $text_alignment; ?>">
+                        <span class="text-xl mb-8"><?php echo $slide['sub_header']; ?></span>
+                        <div class="flex space-x-4">
                             <a href="#" class="bg-teal-600 px-8 py-3 rounded-md font-bold hover:bg-teal-700">Meet the Team</a>
                             <a href="#" class="bg-white text-teal-900 px-8 py-3 rounded-md font-bold hover:bg-gray-100">Our Services</a>
                         </div>

@@ -166,3 +166,8 @@ class Custom_Submenu_Walker extends Walker_Nav_Menu {
         $output .= "{$n}{$indent}<ul class=\"$class_names\">{$n}";
     }
 }
+
+// Remove p tags from content
+remove_filter( 'the_content', 'wpautop' );
+// Remove p tags from excerpt
+remove_filter( 'the_excerpt', 'wpautop' );
