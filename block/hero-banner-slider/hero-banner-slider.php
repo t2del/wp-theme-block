@@ -10,18 +10,11 @@
  *          This is either the post ID currently being displayed inside a query loop,
  *          or the post ID of the post hosting this block.
  * @param   array $context The context provided to the block by the post or it's parent block.
+ * 
+ * SCF - Block - Hero - Banner - Slider (Multiple Image)
  */
-
-
-
 $hero_banner_slider = get_field( 'hero_banner_slider' );
-// $header          = get_field( 'header' );
-// $banner       = get_field( 'banner' ); 
 $max_height       = get_field( 'max_height' ) ? get_field( 'max_height' ) : '50';
-// $header       = get_field( 'header' ) ? get_field( 'header' ) : 'Main Heading';
-// $sub_header      = get_field( 'sub_header' ) ? get_field( 'sub_header' ) : 'Sub Heading';
-// $cta_button     = get_field( 'cta_button' );
-// $text_alignment = get_field( 'text_alignment' ) ? get_field( 'text_alignment' ) : 'left';
 
 ?>
 
@@ -34,7 +27,7 @@ $max_height       = get_field( 'max_height' ) ? get_field( 'max_height' ) : '50'
             <?php foreach($hero_banner_slider as $counter => $slide): ?> 
                 <li class="w-full h-full relative <?php echo "slide-". $counter; ?>" >
                     <div class="absolute inset-0 opacity-50 bg-black" >
-                        <img src="<?= $slide['banner']['url'];?>" class="w-full h-[<?php echo $max_height; ?>vh] object-cover"  alt="<?php echo "counter-". $counter; ?> <?php echo ($slide['banner']['alt']) ? $slide['banner']['alt'] : 'Hero Banner Image';?>">
+                        <img src="<?= $slide['banner']['url'];?>" class="w-full h-[<?php echo $max_height; ?>vh] object-cover object-[<?= $slide['position_x'];?>%_<?= $slide['position_y'];?>%]"  alt="<?php echo "counter-". $counter; ?> <?php echo ($slide['banner']['alt']) ? $slide['banner']['alt'] : 'Hero Banner Image';?>">
                     </div>
                     <div class="container mx-auto px-4 relative z-999 text-white flex flex-col items-<?php echo $slide['text_alignment']; ?> justify-center h-[<?php echo $max_height; ?>vh]">
                         <h1 class="text-4xl md:text-5xl font-bold mb-6"><?php echo $slide['header']; ?></h1>
