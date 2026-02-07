@@ -29,8 +29,22 @@
 		)
 	  );
 	}
-	
 	add_action( 'init', 'register_my_menus' );
+	
+	add_action( 'rest_api_init', function () {
+		register_rest_route( 'my-api/v1', '/header-menu', array(
+			'methods' => 'GET',
+			'callback' => 'get_nav_menu_json',
+		) );
+	} );
+
+	function get_nav_menu_json() {
+		// Replace 'primary' with your theme location or menu ID
+		$menu_items = wp_get_nav_menu_items('header-menu');
+		return $menu_items;
+	}
+
+
 
 	// Enqueue Scripts and Styles
 	function denn_scripts() {
