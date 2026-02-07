@@ -138,7 +138,7 @@
                 </div>
 
                 <!-- Bottom icon navigation for screens <= 800px -->
-                <div class="hidden  max-[800px]:fixed max-[800px]:bottom-0 max-[800px]:left-0 max-[800px]:right-0 max-[800px]:bg-white max-[800px]:border-t max-[800px]:border-gray-200 max-[800px]:py-2  max-[800px]:flex max-[800px]:justify-around max-[800px]:items-center max-[800px]:z-50">
+                <div class="hidden max-[800px]:fixed max-[800px]:bottom-0 max-[800px]:left-0 max-[800px]:right-[-20px] max-[800px]:bg-white max-[800px]:border-t max-[800px]:border-gray-200 max-[800px]:py-2  max-[800px]:flex max-[800px]:justify-around max-[800px]:items-center max-[800px]:z-50">
                     <button aria-label="WhatsApp" class="text-green-500 text-2xl focus:outline-none">
                         <i class="fab fa-whatsapp"></i>
                     </button>
@@ -147,7 +147,7 @@
                         <i class="fas fa-shopping-cart"></i>
                     </button>
 
-                    <button aria-label="Book Health Screening" class="bg-blue-600 text-white p-3 rounded-full shadow-lg -mt-3 focus:outline-none">
+                    <button aria-label="Book Health Screening" class="text-gray-700 text-xl focus:outline-none">
                         <i class="fas fa-notes-medical"></i>
                     </button>
 
@@ -225,6 +225,6 @@
         </div>
     </div>
 
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-300 z-40 min-[1200px]:hidden"></div>
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-300 z-20 min-[1200px]:hidden"></div>
 <!-- Header -->
  <main role="main">
