@@ -30,27 +30,13 @@
 	  );
 	}
 	add_action( 'init', 'register_my_menus' );
-	
-	add_action( 'rest_api_init', function () {
-		register_rest_route( 'my-api/v1', '/header-menu', array(
-			'methods' => 'GET',
-			'callback' => 'get_nav_menu_json',
-		) );
-	} );
-
-	function get_nav_menu_json() {
-		// Replace 'primary' with your theme location or menu ID
-		$menu_items = wp_get_nav_menu_items('header-menu');
-		return $menu_items;
-	}
-
-
 
 	// Enqueue Scripts and Styles
 	function denn_scripts() {
-		wp_enqueue_script('main-script', JS_PATH.'/main.js');
-		// wp_enqueue_script('tailwind-script', 'https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4');
-		//wp_enqueue_script('glide-script', 'https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js');
+		wp_enqueue_style('theme-style', ASSETS_PATH.'/css/styles.css');
+		wp_enqueue_style('theme-font-style', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+		
+		wp_enqueue_script('theme-script', JS_PATH.'/main.js');
 		
 		wp_enqueue_script('glide-script', JS_PATH.'/tailwind/glide.js');
 		wp_enqueue_script('tailwind-script', JS_PATH.'/tailwind/tailwind.js');

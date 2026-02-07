@@ -1,3 +1,48 @@
+<?php
+    $menu_to_display = array();
+    $custom_logo_id = get_theme_mod( 'custom_logo' );
+    $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+    $menu_items = wp_get_nav_menu_items('header-menu');
+
+    foreach( $menu_items as $item ) {
+        if($item->menu_item_parent == 0) {
+            $menu_to_display[] = array(
+                "post_name" => $item->post_name,
+                "title" => $item->title,
+                "url" => $item->url,
+                "ID" => $item->ID,
+                "children" => array(),
+            );
+        } else {
+            // Find parent and add as child
+            foreach( $menu_to_display as &$parent ) {
+                if( $parent['ID'] == $item->menu_item_parent ) {
+                    $parent['children'][] = array(
+                        "post_name" => $item->post_name,
+                        "title" => $item->title,
+                        "url" => $item->url,
+                        "ID" => $item->ID,
+                        "children" => array(),
+                    );
+                    break;
+                } else {
+                    // Check if item is grandchild
+                    foreach( $parent['children'] as &$child ) {
+                        if( $child['ID'] == $item->menu_item_parent ) {
+                            $child['children'][] = array(
+                                "post_name" => $item->post_name,
+                                "title" => $item->title,
+                                "url" => $item->url,
+                                "ID" => $item->ID,
+                            );
+                            break 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+?>
 <!doctype html>
 <html lang="en" >
     <head>
@@ -7,73 +52,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
 		<?php wp_head(); ?>  
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <style>
-        /* Custom Styles for non-Tailwind specific overrides or components */
-        /* This ensures the mobile menu is fixed and takes full height */
-        #mobile-menu {
-            transition: transform 0.3s ease-in-out;
-            transform: translateX(100%); /* Start hidden off-screen */
-        }
-        #mobile-menu.active {
-            transform: translateX(0); /* Slide in */
-        }
-        /* Mobile menu specific styles to emulate the image */
-        .mobile-dropdown-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .mobile-dropdown-content.active {
-            max-height: 500px; /* Arbitrary large height to allow content to show */
-        }
-    </style>
+
     </head>
     <body <?php body_class(); ?>>
-
-<?php
-$menu_to_display = array();
-$custom_logo_id = get_theme_mod( 'custom_logo' );
-$image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-$menu_items = wp_get_nav_menu_items('header-menu');
-// debug($menu_items)
-foreach( $menu_items as $item ) {
-    if($item->menu_item_parent == 0) {
-        $menu_to_display[] = array(
-           "title" => $item->title,
-            "url" => $item->url,
-            "ID" => $item->ID,
-            "children" => array(),
-        );
-    } else {
-        // Find parent and add as child
-        foreach( $menu_to_display as &$parent ) {
-            if( $parent['ID'] == $item->menu_item_parent ) {
-                $parent['children'][] = array(
-                    "title" => $item->title,
-                    "url" => $item->url,
-                    "ID" => $item->ID,
-                    "children" => array(),
-                );
-                break;
-            } else {
-                // Check if item is grandchild
-                foreach( $parent['children'] as &$child ) {
-                    if( $child['ID'] == $item->menu_item_parent ) {
-                        $child['children'][] = array(
-                            "title" => $item->title,
-                            "url" => $item->url,
-                            "ID" => $item->ID,
-                        );
-                        break 2;
-                    }
-                }
-            }
-        }
-    }
-}
-// debug($menu_to_display);
-?>
 <!-- Topbar -->
     <div class="bg-gray-100 py-2 border-b text-sm text-white w-full">
         <div class="container mx-auto px-4 flex justify-between items-center text-sm text-gray-600">
@@ -106,21 +87,21 @@ foreach( $menu_items as $item ) {
                         <?php foreach( $menu_to_display as $item ) : ?>
                             <li class="relative group">
                                 <?php if (empty($item['children'])) : ?>
-                                <a href="<?php echo $item['url']; ?>" class="hover:text-blue-600"><?php echo $item['title']; ?></a>
+                                <a href="<?php echo $item['url']; ?>" class="hover:text-blue-600 capitalize"><?php echo $item['title']; ?></a>
                                 <?php endif; ?>
                                 <?php if (!empty($item['children'])) : ?>
                                     <button class="flex items-center hover:text-blue-600 focus:outline-none">
-                                        <?php echo $item['title']; ?> <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                                        <?php echo $item['title']; ?> <i class="fas fa-chevron-down ml-1 text-xs capitalize transition-transform duration-300 group-hover:rotate-180"></i>
                                     </button>
                                     <ul class="absolute left-0 top-full mt-0 w-64 bg-white shadow-xl border border-gray-100 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-1">
                                         <?php foreach ($item['children'] as $child) : ?>
                                             <li class="relative group/nested">
-                                                <a href="<?php echo $child['url']; ?>" class="flex justify-between items-center px-4 py-2 hover:bg-gray-50"><?php echo $child['title']; ?> <i class="fas fa-chevron-right text-xs"></i></a>
+                                                <a href="<?php echo $child['url']; ?>" class="flex justify-between items-center px-4 py-2 hover:bg-gray-50"><?php echo $child['title']; ?> <i class="fas fa-chevron-right text-xs capitalize"></i></a>
                                                 <?php if (!empty($child['children'])) : ?>
                                                     <ul class="absolute left-full top-0 w-64 bg-white shadow-xl border border-gray-100 z-30 opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-300 py-1">
                                                         <?php foreach ($child['children'] as $grandchild) : ?>
                                                             <li>
-                                                                <a href="<?php echo $grandchild['url']; ?>" class="block px-4 py-2 hover:bg-gray-50"><?php echo $grandchild['title']; ?></a>
+                                                                <a href="<?php echo $grandchild['url']; ?>" class="block px-4 py-2 hover:bg-gray-50 capitalize"><?php echo $grandchild['title']; ?></a>
                                                             </li>
                                                         <?php endforeach; ?>
                                                     </ul>
@@ -208,6 +189,43 @@ foreach( $menu_items as $item ) {
 
         <nav class="py-2 text-sm font-semibold text-gray-700">
             <ul class="mobile-menu-list">
+                <?php foreach( $menu_to_display as $item ) : ?>
+                    <li class="<?php echo empty($item['children']) ? ' ' : 'mobile-dropdown border-b border-gray-100'; ?>" id="mobile-<?php echo $item['post_name']; ?>-dropdown">
+                        <?php if (empty($item['children'])) : ?>
+                        <a href="<?php echo $item['url']; ?>" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100 capitalize"><?php echo $item['title']; ?></a>
+                        <?php endif; ?>
+                        <?php if (!empty($item['children'])) : ?>
+
+                            <button class="flex justify-between items-center w-full px-4 py-3 hover:bg-gray-50 focus:outline-none">
+                                <?php echo $item['title']; ?> <i class="fas fa-chevron-right text-xs transform transition-transform duration-300"></i>
+                            </button>
+                            <ul class="mobile-dropdown-content bg-gray-50 pl-4">
+                                <?php foreach ($item['children'] as $child) : ?>
+                                    <li class="<?php echo empty($child['children']) ? ' ' : 'mobile-dropdown border-b border-gray-100'; ?>">
+                                        <?php if (empty($child['children'])) : ?>
+                                            <a href="<?php echo $child['url']; ?>" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100 capitalize"><?php echo $child['title']; ?></a>
+                                        <?php endif; ?>
+                                        <?php if (!empty($child['children'])) : ?>
+                                            <button class="flex justify-between items-center w-full px-4 py-3 hover:bg-gray-50 focus:outline-none">
+                                                <?php echo $child['title']; ?> <i class="fas fa-chevron-right text-xs transform transition-transform duration-300"></i>
+                                            </button>
+                                        <?php endif; ?>    
+                                        <?php if (!empty($child['children'])) : ?>
+                                            <ul class="mobile-dropdown-content bg-gray-50 pl-4">
+                                                <?php foreach ($child['children'] as $grandchild) : ?>
+                                                    <li>
+                                                        <a href="<?php echo $grandchild['url']; ?>" class="block px-4 py-2 hover:bg-gray-50 capitalize"><?php echo $grandchild['title']; ?></a>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php endif; ?>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                        
+                    </li>
+                <?php endforeach; ?>
                 <li><a href="#" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100">ABOUT US</a></li>
                 
                 <li class="mobile-dropdown border-b border-gray-100" id="mobile-services-dropdown">
