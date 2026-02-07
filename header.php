@@ -90,7 +90,7 @@
                                 <a href="<?php echo $item['url']; ?>" class="hover:text-blue-600 capitalize"><?php echo $item['title']; ?></a>
                                 <?php endif; ?>
                                 <?php if (!empty($item['children'])) : ?>
-                                    <button class="flex items-center hover:text-blue-600 focus:outline-none">
+                                    <button class="flex items-center hover:text-blue-600 focus:outline-none capitalize">
                                         <?php echo $item['title']; ?> <i class="fas fa-chevron-down ml-1 text-xs capitalize transition-transform duration-300 group-hover:rotate-180"></i>
                                     </button>
                                     <ul class="absolute left-0 top-full mt-0 w-64 bg-white shadow-xl border border-gray-100 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-1">
@@ -113,38 +113,15 @@
                                 
                             </li>
                         <?php endforeach; ?>
-                        
-                        <li class="relative group">
-                            <button class="flex items-center hover:text-blue-600 focus:outline-none">
-                                SERVICES <i class="fas fa-chevron-down ml-1 text-xs transition-transform duration-300 group-hover:rotate-180"></i>
-                            </button>
-                            <ul class="absolute left-0 top-full mt-0 w-64 bg-white shadow-xl border border-gray-100 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-1">
-                                <li class="relative group/nested" id="desktop-gp-plus-dropdown">
-                                    <a href="#" class="flex justify-between items-center px-4 py-2 hover:bg-gray-50">
-                                        GP+ <i class="fas fa-chevron-right text-xs"></i>
-                                    </a>
-                                    <ul class="absolute left-full top-0 w-64 bg-white shadow-xl border border-gray-100 z-30 opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-300 py-1">
-                                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-50">HUB @ HOUGANG GREEN</a></li>
-                                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-50">HUB @ PASIR RIS</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50">GP</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50">HOME CARE & NURSING</a></li>
-                                <li><a href="#" class="block px-4 py-2 hover:bg-gray-50">SPECIALTY CARE</a></li>
-                            </ul>
-                        </li>
-                        
                     </ul>
                 </nav>
-
-                
             </div>
             
             <div class="flex items-center space-x-4 text-sm font-medium">
                 <div class="flex items-center space-x-4 text-sm font-medium max-[800px]:hidden">
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded text-xs font-bold hover:bg-blue-700 transition duration-150">
-                        Book Health Screening
-                    </button>
+                    <a class="bg-blue-600 text-white px-4 py-2 rounded text-xs font-bold hover:bg-blue-700 transition duration-150 capitalize" href="#">
+                        Book Now
+                    </a>
                     <!-- <i class="fab fa-whatsapp text-2xl text-green-500 cursor-pointer"></i>
                     <i class="fas fa-shopping-cart text-xl text-gray-700 cursor-pointer"></i>
                     <i class="fas fa-user-circle text-xl text-gray-700 cursor-pointer"></i> -->
@@ -181,7 +158,9 @@
 
     <div id="mobile-menu" class="fixed top-0 right-0 h-full bg-white shadow-2xl z-50 min-[1200px]:hidden overflow-y-auto" style="width:320px;">
         <div class="flex justify-between items-center h-16 px-4 border-b border-gray-200">
-            <img src="https://www.fullertonhealth.com/sg/wp-content/uploads/2021/06/logo-fullerton-health-small.png" alt="Fullerton Health" class="h-10">
+            <a id="WindUI" aria-label="WindUI logo" aria-current="page" class="flex items-center gap-2 py-3 text-lg whitespace-nowrap focus:outline-none " href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                <img src="<?php echo esc_url( $image[0] ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-8 w-auto" />
+            </a>
             <button id="mobile-menu-close" class="text-gray-700 text-2xl p-2 focus:outline-none">
                 <i class="fas fa-times"></i>
             </button>
@@ -225,34 +204,7 @@
                         <?php endif; ?>
                         
                     </li>
-                <?php endforeach; ?>
-                <li><a href="#" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100">ABOUT US</a></li>
-                
-                <li class="mobile-dropdown border-b border-gray-100" id="mobile-services-dropdown">
-                    <button class="flex justify-between items-center w-full px-4 py-3 hover:bg-gray-50 focus:outline-none">
-                        SERVICES <i class="fas fa-chevron-right text-xs transform transition-transform duration-300"></i>
-                    </button>
-                    <ul class="mobile-dropdown-content bg-gray-50">
-                        <li><a href="#" class="block pl-8 py-2 text-sm font-normal border-b border-gray-100">GP+</a></li>
-                        <li><a href="#" class="block pl-8 py-2 text-sm font-normal border-b border-gray-100">GP</a></li>
-                        <li><a href="#" class="block pl-8 py-2 text-sm font-normal border-b border-gray-100">CLINICS</a></li>
-                        <li><a href="#" class="block pl-8 py-2 text-sm font-normal border-b border-gray-100">FULLERTON HEALTH @ NTU</a></li>
-                    </ul>
-                </li>
-                
-                <li class="mobile-dropdown border-b border-gray-100" id="mobile-gp-plus-dropdown">
-                    <button class="flex justify-between items-center w-full px-4 py-3 hover:bg-gray-50 focus:outline-none">
-                        GP+ <i class="fas fa-chevron-right text-xs transform transition-transform duration-300"></i>
-                    </button>
-                    <ul class="mobile-dropdown-content bg-gray-50">
-                        <li><a href="#" class="block pl-8 py-2 text-sm font-normal border-b border-gray-100">HUB @ HOUGANG GREEN</a></li>
-                        <li><a href="#" class="block pl-8 py-2 text-sm font-normal border-b border-gray-100">HUB @ PASIR RIS</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="#" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100">HOME CARE & NURSING</a></li>
-                <li><a href="#" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100">SPECIALTY CARE</a></li>
-                <li><a href="#" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100">MIGRANT WORKER CARE</a></li>
+                <?php endforeach; ?>    
             </ul>
         </nav>
         
