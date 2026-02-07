@@ -42,6 +42,7 @@
             }
         }
     }
+    //debug($menu_to_display);
 ?>
 <!doctype html>
 <html lang="en-US" >
@@ -84,20 +85,31 @@
             
                 <nav class="flex space-x-4 text-sm font-semibold text-gray-700 max-[1200px]:hidden" role="navigation">
                     <ul class="flex space-x-4">
-                        <?php foreach( $menu_to_display as $item ) : ?>
-                            <li class="relative group">
-                                <?php if (empty($item['children'])) : ?>
-                                <a href="<?php echo $item['url']; ?>" class="hover:text-blue-600 capitalize"><?php echo $item['title']; ?></a>
+                        <?php foreach( $menu_to_display as $item_lvl1 ) : ?>
+                            <li class="relative group level1">
+                                <?php if (empty($item_lvl1['children'])) : ?>
+                                    <a href="<?php echo $item_lvl1['url']; ?>" class="hover:text-blue-600 capitalize">
+                                        <?php echo $item_lvl1['title']; ?>
+                                    </a>
                                 <?php endif; ?>
-                                <?php if (!empty($item['children'])) : ?>
+                                <?php if (!empty($item_lvl1['children'])) : ?>
                                     <button class="flex items-center hover:text-blue-600 focus:outline-none capitalize">
-                                        <?php echo $item['title']; ?> <i class="fas fa-chevron-down ml-1 text-xs capitalize transition-transform duration-300 group-hover:rotate-180"></i>
+                                        <?php echo $item_lvl1['title']; ?> <i class="fas fa-chevron-down ml-1 text-xs capitalize transition-transform duration-300 group-hover:rotate-180"></i>
                                     </button>
                                     <ul class="absolute left-0 top-full mt-0 w-64 bg-white shadow-xl border border-gray-100 z-20 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-1">
-                                        <?php foreach ($item['children'] as $child) : ?>
+                                        
+                                        <?php foreach ($item_lvl1['children'] as &$child) : ?>
                                             <li class="relative group/nested">
-                                                <a href="<?php echo $child['url']; ?>" class="flex justify-between items-center px-4 py-2 hover:bg-gray-50"><?php echo $child['title']; ?> <i class="fas fa-chevron-right text-xs capitalize"></i></a>
+                                                <?php if (empty($child['children'])) : ?>
+                                                    <a href="<?php echo $child['url']; ?>" class="flex justify-between items-center px-4 py-2 hover:bg-gray-50 capitalize">
+                                                        <?php echo $child['title']; ?>
+                                                    </a>
+                                                <?php endif; ?>
+                                                
                                                 <?php if (!empty($child['children'])) : ?>
+                                                    <button class="flex justify-between items-center px-4 py-2 hover:bg-gray-50 focus:outline-none w-full">
+                                                        <?php echo $child['title']; ?> <i class="fas fa-chevron-down ml-1 text-xs capitalize transition-transform duration-300 group-hover:rotate-180"></i>
+                                                    </button>
                                                     <ul class="absolute left-full top-0 w-64 bg-white shadow-xl border border-gray-100 z-30 opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-300 py-1">
                                                         <?php foreach ($child['children'] as $grandchild) : ?>
                                                             <li>
@@ -109,8 +121,7 @@
                                             </li>
                                         <?php endforeach; ?>
                                     </ul>
-                                <?php endif; ?>
-                                
+                                <?php endif; ?>    
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -179,7 +190,7 @@
                                 <?php echo $item['title']; ?> <i class="fas fa-chevron-right text-xs transform transition-transform duration-300"></i>
                             </button>
                             <ul class="mobile-dropdown-content bg-gray-50 pl-4">
-                                <?php foreach ($item['children'] as $child) : ?>
+                                <?php foreach ($item['children'] as &$child) : ?>
                                     <li class="<?php echo empty($child['children']) ? ' ' : 'mobile-dropdown border-b border-gray-100'; ?>">
                                         <?php if (empty($child['children'])) : ?>
                                             <a href="<?php echo $child['url']; ?>" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100 capitalize"><?php echo $child['title']; ?></a>
