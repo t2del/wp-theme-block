@@ -44,7 +44,7 @@
     }
 ?>
 <!doctype html>
-<html lang="en" >
+<html lang="en-US" >
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>" />
         <meta http-equiv="x-ua-compatible" content="ie=edge">        
@@ -73,7 +73,7 @@
 <!-- Topbar -->
 
 <!-- Header -->
-<header class="relative z-20 w-full border-b shadow-lg  border-slate-200 bg-white/90 shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden sticky top-0 shadow bg-white">
+<header class="relative z-20 w-full border-b shadow-lg  border-slate-200 bg-white/90 shadow-slate-700/5 after:absolute after:top-full after:left-0 after:z-10 after:block after:h-px after:w-full after:bg-slate-200 lg:border-slate-200 lg:backdrop-blur-sm lg:after:hidden sticky top-0 shadow bg-white" role="Header">
         <div class="max-w-[1650px] mx-auto flex justify-between items-center h-20 px-4 sm:px-6 lg:px-8">
             <div class="flex items-center space-x-4 text-sm font-medium">            
                 <a id="WindUI" aria-label="WindUI logo" aria-current="page" class="flex items-center gap-2 py-3 text-lg whitespace-nowrap focus:outline-none " href="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -82,7 +82,7 @@
             </div>
             <div class="flex items-center space-x-8">
             
-                <nav class="flex space-x-4 text-sm font-semibold text-gray-700 max-[1200px]:hidden">
+                <nav class="flex space-x-4 text-sm font-semibold text-gray-700 max-[1200px]:hidden" role="navigation">
                     <ul class="flex space-x-4">
                         <?php foreach( $menu_to_display as $item ) : ?>
                             <li class="relative group">
@@ -147,7 +147,7 @@
                 </div>
                 
 
-                <button id="mobile-menu-toggle" class="text-gray-700 text-2xl p-2 focus:outline-none hidden max-[1200px]:block">
+                <button id="mobile-menu-toggle" aria-label="Toggle Mobile Menu" class="text-gray-700 text-2xl p-2 focus:outline-none hidden max-[1200px]:block">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -161,12 +161,12 @@
             <a id="WindUI" aria-label="WindUI logo" aria-current="page" class="flex items-center gap-2 py-3 text-lg whitespace-nowrap focus:outline-none " href="<?php echo esc_url( home_url( '/' ) ); ?>">
                 <img src="<?php echo esc_url( $image[0] ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="h-8 w-auto" />
             </a>
-            <button id="mobile-menu-close" class="text-gray-700 text-2xl p-2 focus:outline-none">
+            <button id="mobile-menu-close" aria-label="Close Mobile Menu" class="text-gray-700 text-2xl p-2 focus:outline-none">
                 <i class="fas fa-times"></i>
             </button>
         </div>
 
-        <nav class="py-2 text-sm font-semibold text-gray-700">
+        <nav class="py-2 text-sm font-semibold text-gray-700" role="mobile-navigation">
             <ul class="mobile-menu-list">
                 <?php foreach( $menu_to_display as $item ) : ?>
                     <li class="<?php echo empty($item['children']) ? ' ' : 'mobile-dropdown border-b border-gray-100'; ?>" id="mobile-<?php echo $item['post_name']; ?>-dropdown">

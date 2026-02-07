@@ -33,13 +33,13 @@
 
 	// Enqueue Scripts and Styles
 	function denn_scripts() {
-		wp_enqueue_style('theme-style', ASSETS_PATH.'/css/styles.css');
-		wp_enqueue_style('theme-font-style', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+		wp_enqueue_style('theme-style', 		ASSETS_PATH.'/css/styles.css');
+		wp_enqueue_style('theme-font-style', 	ASSETS_PATH.'/css/fontawesome-all.min.css');
 		
-		wp_enqueue_script('theme-script', JS_PATH.'/main.js');
+		wp_enqueue_script('theme-script', 		JS_PATH.'/main.js');
 		
-		wp_enqueue_script('glide-script', JS_PATH.'/tailwind/glide.js');
-		wp_enqueue_script('tailwind-script', JS_PATH.'/tailwind/tailwind.js');
+		wp_enqueue_script('glide-script', 		JS_PATH.'/tailwind/glide.js');
+		wp_enqueue_script('tailwind-script', 	JS_PATH.'/tailwind/tailwind.js');
 		
     }
 	add_action('wp_enqueue_scripts', 'denn_scripts');
