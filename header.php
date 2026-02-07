@@ -78,8 +78,8 @@ foreach( $menu_items as $item ) {
     <div class="bg-gray-100 py-2 border-b text-sm text-white w-full">
         <div class="container mx-auto px-4 flex justify-between items-center text-sm text-gray-600">
             <div class="flex space-x-4">
-                <span>📞 +65 8816 1244</span>
-                <span>📧 info@urban-rehab.org</span>
+                <span>📞 +65 1234 1234</span>
+                <span>📧 info@info.org</span>
             </div>
             <div class="hidden md:block">
                 <span>Mon–Fri: 08:30 – 20:00 | Sat: 08:30 – 15:00</span>
