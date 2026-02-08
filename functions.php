@@ -171,3 +171,48 @@ class Custom_Submenu_Walker extends Walker_Nav_Menu {
 remove_filter( 'the_content', 'wpautop' );
 // Remove p tags from excerpt
 remove_filter( 'the_excerpt', 'wpautop' );
+
+
+function menu_to_display() {
+	$menu_items = wp_get_nav_menu_items('header-menu');
+	$menu_to_display = array();
+    foreach( $menu_items as $item ) {
+        if($item->menu_item_parent == 0) {
+            $menu_to_display[] = array(
+                "post_name" => $item->post_name,
+                "title" => $item->title,
+                "url" => $item->url,
+                "ID" => $item->ID,
+                "children" => array(),
+            );
+        } else {
+            // Find parent and add as child
+            foreach( $menu_to_display as &$parent ) {
+                if( $parent['ID'] == $item->menu_item_parent ) {
+                    $parent['children'][] = array(
+                        "post_name" => $item->post_name,
+                        "title" => $item->title,
+                        "url" => $item->url,
+                        "ID" => $item->ID,
+                        "children" => array(),
+                    );
+                    break;
+                } else {
+                    // Check if item is grandchild
+                    foreach( $parent['children'] as &$child ) {
+                        if( $child['ID'] == $item->menu_item_parent ) {
+                            $child['children'][] = array(
+                                "post_name" => $item->post_name,
+                                "title" => $item->title,
+                                "url" => $item->url,
+                                "ID" => $item->ID,
+                            );
+                            break 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+	return $menu_to_display;
+}
