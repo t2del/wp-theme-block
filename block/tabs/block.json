@@ -1,0 +1,16 @@
+{
+    "name": "acf/tabs",
+    "title": "Tabs",
+    "description": "A custom Tabs that uses ACF fields.",
+    "style": [ "file:./banner.css" ],
+    "category": "den-dev",
+    "icon": "admin-comments",
+    "keywords": ["questions", "tabs"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}

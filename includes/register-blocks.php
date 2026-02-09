@@ -18,6 +18,7 @@ function register_acf_blocks() {
     register_block_type( get_template_directory() . '/block/hero-banner' );
     register_block_type( get_template_directory() . '/block/hero-banner-slider' );
     register_block_type( get_template_directory() . '/block/accordion' );
+    register_block_type( get_template_directory() . '/block/tabs' );
     register_block_type( get_template_directory() . '/block/profile-slider' );
 }
 // Here we call our register_acf_blocks() function on init.
