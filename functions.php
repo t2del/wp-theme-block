@@ -8,6 +8,7 @@
 	 */
 	
 	define("INC_PATH", get_template_directory().'/includes');
+    define("BLOCK_PATH", get_template_directory().'/block');
 	define("ASSETS_PATH", get_template_directory_uri().'/assets');
 	define("JS_PATH", ASSETS_PATH.'/js');
 	define("CSS_PATH", ASSETS_PATH.'/css');
@@ -50,14 +51,12 @@
 	// Ajax Forms
 
 	// Block Register
-	require INC_PATH.'/register-blocks.php';
+	require BLOCK_PATH.'/register-blocks.php';
 
 
 	// Dequeue scripts
 	require INC_PATH.'/dequeue-scripts.php';
 
-	// Custom PHP Blocks
-	require INC_PATH.'/custom-blocks.php';
 		
 	/* ========================================================================================================================
 	Theme specific settings
