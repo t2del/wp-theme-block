@@ -1,0 +1,16 @@
+{
+    "name": "acf/counter-up",
+    "title": "Counter Up",
+    "description": "A custom Counter Up that uses ACF fields.",
+    "style": [ "file:./counter-up.css" ],
+    "category": "den-dev",
+    "icon": "admin-comments",
+    "keywords": ["questions", "counter-up"],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "anchor": true
+    }
+}
