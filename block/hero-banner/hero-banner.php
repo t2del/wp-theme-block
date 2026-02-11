@@ -28,7 +28,20 @@ $position_y       = get_field( 'position_y' ) ? get_field( 'position_y' ) : '50'
 
 <section id="hero-banner-<?php echo $block['id']; ?>" class="relative bg-gray-900 h-[<?php echo $max_height; ?>vh] flex items-center">
     <div class="absolute inset-0 opacity-50 bg-black">
-        <img src="<?= $banner['url'];?>" class="w-full h-full object-cover object-[<?php echo $position_x; ?>%_<?php echo $position_y; ?>%]" alt="<?php echo ($banner['alt']) ? $banner['alt'] : 'Hero Banner Image';?>">
+        <?php
+        if ( $banner && is_array( $banner ) ) {
+            echo wp_get_attachment_image(
+                $banner['ID'],
+                'full',
+                false,
+                array(
+                    'class' => 'w-full h-full object-cover',
+                    'style' => 'object-position: ' . $position_x . '% ' . $position_y . '%',
+                    'alt'   => $banner['alt'] ? $banner['alt'] : 'Hero Banner Image',
+                )
+            );
+        }
+        ?>
     </div>
     <div class="container mx-auto px-4 relative z-10 text-white text-<?php echo $text_alignment; ?>">
         <h1 class="text-4xl md:text-5xl font-bold mb-6"><?php echo $header; ?></h1>
