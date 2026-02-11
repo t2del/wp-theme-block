@@ -20,14 +20,14 @@ $string         = (get_field( 'string' )) ? get_field( 'string' ) : '+' ;
 $description    = get_field( 'description' ); 
 ?>
 
-<section id="counter-up-<?php echo $block['id']; ?>">
+<section id="counter-up-<?php echo $block['id']; ?>" class="counter-up-section">
     <div class="container">
-        <div class="container-counter text-accent-base text-center py-2 text-5xl font-bold flex justify-center items-center">  
+        <div class="container-counter text-accent-base text-center py-2 text-4xl md:text-4xl font-bold flex justify-center items-center">  
             <span class="counter-<?php echo $block['id']; ?> title ml-2 md:top-4 md:z-20" data-target="<?php echo $data_target; ?>">0</span> 
             <span class="string" ><?php echo $string; ?></span>    
         </div>
         <div class="description text-accent-base text-center ">
-            <h4 class="message text-xl m-2 font-bold"><?php echo $description; ?></h4>
+            <h4 class="message font-medium text-gray-900 text-xl font-bold"><?php echo $description; ?></h4>
         </div>    
     </div>
 </section>
@@ -38,7 +38,7 @@ $description    = get_field( 'description' );
 
     const animateCounter = (counterSpan) => {
       const target = +counterSpan.getAttribute('data-target');
-      const increment = target / 600; // Adjust for desired animation speed
+      const increment = target / 100; // Adjust for desired animation speed
 
       let current = 0;
       const updateCounter = () => {

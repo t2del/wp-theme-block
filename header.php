@@ -137,7 +137,7 @@
 
         <nav class="py-2 text-sm font-semibold text-gray-700" role="navigation">
             <ul class="mobile-menu-list">
-                <?php foreach( $menu_to_display as $item ) : ?>
+                <?php foreach( menu_to_display() as $item ) : ?>
                     <li class="<?php echo empty($item['children']) ? ' ' : 'mobile-dropdown border-b border-gray-100'; ?>" id="mobile-<?php echo $item['post_name']; ?>-dropdown">
                         <?php if (empty($item['children'])) : ?>
                         <a href="<?php echo $item['url']; ?>" class="block px-4 py-3 hover:bg-gray-50 border-b border-gray-100 capitalize"><?php echo $item['title']; ?></a>

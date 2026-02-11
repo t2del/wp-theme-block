@@ -46,4 +46,29 @@ document.addEventListener('DOMContentLoaded', () => {
       // --- Desktop Dropdown Logic (Optional: for JS fallback if pure CSS isn't enough) ---
       // The desktop dropdowns here primarily use pure Tailwind's 'group-hover' utilities 
       // for simplicity, so no extra JS is strictly needed for the basic hover behavior.
+    document.querySelectorAll('.tab-section').forEach(function(tabSection) {
+        tabSection.addEventListener('click', function(e) {
+            if (e.target.getAttribute('role') === 'tab') {
+                var tabIndex = e.target.getAttribute('data-tab');
+                
+                // Remove active state from all tabs and panels
+                tabSection.querySelectorAll('[role="tab"]').forEach(function(tab) {
+                    tab.setAttribute('aria-selected', 'false');
+                    tab.classList.remove('border-blue-600', 'text-blue-600');
+                    tab.classList.add('border-transparent', 'text-gray-600');
+                });
+                tabSection.querySelectorAll('[role="tabpanel"]').forEach(function(panel) {
+                    panel.setAttribute('hidden', '');
+                });
+                
+                // Add active state to clicked tab and corresponding panel
+                e.target.setAttribute('aria-selected', 'true');
+                e.target.classList.remove('border-transparent', 'text-gray-600');
+                e.target.classList.add('border-blue-600', 'text-blue-600');
+                tabSection.querySelector('[data-panel="' + tabIndex + '"]').removeAttribute('hidden');
+            }
+        });
+    });
+    
 });
+
