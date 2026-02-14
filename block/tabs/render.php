@@ -38,7 +38,5 @@ $tabs           = get_field( 'tabs' );
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>
-
-
     </div>
 </section>

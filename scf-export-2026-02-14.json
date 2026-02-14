@@ -281,6 +281,147 @@
         "display_title": ""
     },
     {
+        "key": "group_6990b0abe7683",
+        "title": "Block - Blog Post",
+        "fields": [
+            {
+                "key": "field_6990b0acc0945",
+                "label": "Article Category",
+                "name": "article_category",
+                "aria-label": "",
+                "type": "taxonomy",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "taxonomy": "category",
+                "add_term": 1,
+                "save_terms": 0,
+                "load_terms": 0,
+                "return_format": "object",
+                "field_type": "multi_select",
+                "allow_null": 0,
+                "allow_in_bindings": 1,
+                "bidirectional": 0,
+                "multiple": 0,
+                "bidirectional_target": []
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": "acf\/blog-posts"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_698a035e8bb30",
+        "title": "Block - Counter Up",
+        "fields": [
+            {
+                "key": "field_698a035e5452b",
+                "label": "Data Target",
+                "name": "data_target",
+                "aria-label": "",
+                "type": "number",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "min": 0,
+                "max": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "step": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_698a04565452c",
+                "label": "String",
+                "name": "string",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_698a04685452d",
+                "label": "Description",
+                "name": "description",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": "acf\/counter-up"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
         "key": "group_6979b891e7bcf",
         "title": "Block - Hero - Banner - Slider (Multiple Image)",
         "fields": [
@@ -321,12 +462,12 @@
                     "id": ""
                 },
                 "layout": "block",
-                "pagination": 0,
+                "pagination": 1,
+                "rows_per_page": 1,
                 "min": 0,
                 "max": 0,
                 "collapsed": "",
                 "button_label": "Add Row",
-                "rows_per_page": 20,
                 "sub_fields": [
                     {
                         "key": "field_6979b891e99bf",
@@ -351,6 +492,7 @@
                         "max_height": "",
                         "max_size": "",
                         "mime_types": "",
+                        "allow_in_bindings": 1,
                         "preview_size": "medium",
                         "parent_repeater": "field_6979b8a1f9d66"
                     },
@@ -427,6 +569,52 @@
                         "parent_repeater": "field_6979b8a1f9d66"
                     },
                     {
+                        "key": "field_698c8e531b200",
+                        "label": "Position X",
+                        "name": "position_x",
+                        "aria-label": "",
+                        "type": "range",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 50,
+                        "min": 0,
+                        "max": 100,
+                        "allow_in_bindings": 0,
+                        "step": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_6979b8a1f9d66"
+                    },
+                    {
+                        "key": "field_698c8e6c1b201",
+                        "label": "Position Y",
+                        "name": "position_y",
+                        "aria-label": "",
+                        "type": "range",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": 50,
+                        "min": 0,
+                        "max": 100,
+                        "allow_in_bindings": 0,
+                        "step": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_6979b8a1f9d66"
+                    },
+                    {
                         "key": "field_6979b89204117",
                         "label": "CTA Button",
                         "name": "cta_button",
@@ -436,12 +624,11 @@
                         "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
-                            "width": "",
+                            "width": "33",
                             "class": "",
                             "id": ""
                         },
                         "layout": "table",
-                        "pagination": 0,
                         "min": 0,
                         "max": 0,
                         "collapsed": "",
@@ -483,7 +670,7 @@
         ],
         "menu_order": 0,
         "position": "normal",
-        "style": "default",
+        "style": "seamless",
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
@@ -734,6 +921,119 @@
         "menu_order": 0,
         "position": "normal",
         "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_6989eaa70818f",
+        "title": "Block - Tabs",
+        "fields": [
+            {
+                "key": "field_6989eaa70ccc8",
+                "label": "Header",
+                "name": "header",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_6989eaa7107bd",
+                "label": "Tabs",
+                "name": "tabs",
+                "aria-label": "",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "pagination": 0,
+                "min": 0,
+                "max": 0,
+                "collapsed": "",
+                "button_label": "Add Row",
+                "rows_per_page": 20,
+                "sub_fields": [
+                    {
+                        "key": "field_6989eaa71448b",
+                        "label": "Question",
+                        "name": "question",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "maxlength": "",
+                        "allow_in_bindings": 0,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_6989eaa7107bd"
+                    },
+                    {
+                        "key": "field_6989eaa7180e1",
+                        "label": "Answers",
+                        "name": "answers",
+                        "aria-label": "",
+                        "type": "wysiwyg",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "allow_in_bindings": 0,
+                        "tabs": "all",
+                        "toolbar": "full",
+                        "media_upload": 1,
+                        "delay": 0,
+                        "parent_repeater": "field_6989eaa7107bd"
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": "acf\/tabs"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "seamless",
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": "",
