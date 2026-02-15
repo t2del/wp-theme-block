@@ -7,8 +7,8 @@
  */
 ?>
 <?php get_header(); ?>
-	<div class="page-content">
-		
+	<div class="page-content max-w-[1600px!important] mx-auto">
+		<div class="container">
 			<a href="<?php echo get_permalink( get_option( 'page_for_posts' ) ); ?>">Back to blog</a>
 			<div class="article-section">
 			<?php if ( have_posts() ) { while ( have_posts() ) { the_post(); ?>
@@ -30,5 +30,6 @@
 			
 			<div class="sidebar-section"><?php dynamic_sidebar('sidebar-single-post'); ?></div>
 			</div>
+		</div>	
 	</div>
 <?php get_footer(); ?>

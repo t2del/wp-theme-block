@@ -11,7 +11,7 @@
  */
 ?>
 <?php get_header(); ?>
-	<div class="page-content">
+	<div class="page-content max-w-[1600px!important] mx-auto">
 		<div class="container">
 			<h1 class="page-title"><?php echo get_the_title(get_option( 'page_for_posts' )); ?></h1>
 				<div class="blog-section">

@@ -12,7 +12,7 @@
  */
 ?>
 <?php get_header(); ?>
-	<div class="page-content">
+	<div class="page-content  max-w-[1600px!important] mx-auto">
 		<div class="container">
 			<h1 class="page-title"><?php single_cat_title(); ?></h1>
 				<div class="blog-section">

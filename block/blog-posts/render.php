@@ -85,7 +85,7 @@ $article_category           = get_field( 'article_category' );
                     <?php
                         $args = array(
                             'post_type'      => 'post',
-                            'posts_per_page' => 3,
+                            'posts_per_page' => 4,
                             'post_status' => array( 'publish' ),
                             'tax_query' => array(
                                 array(
