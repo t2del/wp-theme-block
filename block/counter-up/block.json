@@ -3,7 +3,7 @@
     "title": "Counter Up",
     "description": "A custom Counter Up that uses ACF fields.",
     "style": [ "file:./counter-up.css" ],
-    "category": "den-dev",
+    "category": "custom-blocks",
     "icon": "admin-comments",
     "keywords": ["questions", "counter-up"],
     "acf": {

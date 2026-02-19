@@ -3,7 +3,7 @@
     "title": "Banner Slider",
     "description": "A custom banner slider block that uses ACF fields.",
     "style": [ "file:./banner-slider.css" ],
-    "category": "formatting",
+    "category": "custom-blocks",
     "icon": "admin-comments",
     "keywords": ["banner slider", "image"],
     "acf": {

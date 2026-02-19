@@ -3,7 +3,7 @@
     "title": "Hero Banner",
     "description": "A custom Hero Banner that uses ACF fields.",
     "style": [ "file:./banner.css" ],
-    "category": "den-dev",
+    "category": "custom-blocks",
     "icon": "admin-comments",
     "keywords": ["hero", "banner"],
     "acf": {

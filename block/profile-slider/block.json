@@ -3,7 +3,7 @@
     "title": "Profile Slider",
     "description": "A custom Profile Slider that uses ACF fields.",
     "style": [ "file:./banner.css" ],
-    "category": "den-dev",
+    "category": "custom-blocks",
     "icon": "admin-comments",
     "keywords": ["profile", "slider"],
     "acf": {

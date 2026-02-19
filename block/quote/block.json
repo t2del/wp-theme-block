@@ -3,8 +3,8 @@
     "title": "Quote",
     "description": "A custom quote block that uses ACF fields.",
     "style": [ "file:./quote.css" ],
-    "category": "formatting",
-    "icon": "admin-comments",
+    "category": "custom-blocks",
+    "icon": "format-quote",
     "keywords": ["quote"],
     "acf": {
         "mode": "preview",

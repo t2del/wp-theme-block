@@ -3,7 +3,7 @@
     "title": "Blog Posts",
     "description": "A custom Blog Posts that uses ACF fields.",
     "style": [ "file:./banner.css" ],
-    "category": "den-dev",
+    "category": "custom-blocks",
     "icon": "admin-comments",
     "keywords": ["questions", "tabs"],
     "acf": {
