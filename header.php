@@ -190,6 +190,7 @@
             <i class="fas fa-shopping-cart text-xl text-gray-700 cursor-pointer"></i>
             <i class="fas fa-user-circle text-xl text-gray-700 cursor-pointer"></i> -->
         </div>
+        
     </div>
 
     <div id="mobile-menu-overlay" class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-300 z-20 min-[1200px]:hidden"></div>

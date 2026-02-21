@@ -11,7 +11,7 @@
  */
 ?>
 <?php get_header(); ?>
-	<div class="page-content">
+	<div class="page-content max-w-[1600px!important] mx-auto">
 		<h1 class="page-title py-5"><?php echo get_the_title(get_option( 'page_for_posts' )); ?></h1>
 		<div class="grid grid-cols-1 lg:grid-cols-[80%_18%] gap-4 py-5 md:px-2">
 			<div class="blog-section">
