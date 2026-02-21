@@ -12,7 +12,7 @@
 		<div class="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-xs transition hover:shadow-sm">
 			<?php echo get_the_post_thumbnail(get_the_id(), "Full", array("class" => "w-full h-auto object-cover max-h-90")); ?>
 		</div>
-		<div class=" grid grid-cols-[80%_18%] gap-4 py-3">
+		<div class="grid grid-cols-1 lg:grid-cols-[80%_18%] gap-4 py-5 md:px-2">
 			
 				<div class="article-section">
 				<?php //if ( have_posts() ) { while ( have_posts() ) { the_post(); ?>

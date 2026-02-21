@@ -14,3 +14,10 @@
 .mobile-dropdown-content.active {
     max-height: 500px; /* Arbitrary large height to allow content to show */
 }
+
+
+
+/* fix breaking of layout */
+.wp-block-search__label {
+    width: auto !important;
+}
