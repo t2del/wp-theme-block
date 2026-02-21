@@ -14,6 +14,7 @@
 <?php get_header(); ?>
 	<div class="page-content  max-w-[1600px!important] mx-auto">
 		<h1 class="page-title py-5"><?php single_cat_title(); ?></h1>
+
 		<div class="container grid grid-cols-[80%_18%] gap-4 py-5">
 				<div class="blog-section">
 					<?php if ( have_posts() ) { while ( have_posts() ) { the_post(); ?>

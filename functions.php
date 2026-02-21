@@ -85,7 +85,7 @@
 	======================================================================================================================== */
 	
 
-// // //[get_layout layout="nav-bar" my_variable="some value" var1="some value" var2="some value"]
+// [get_layout layout="nav-bar" my_variable="some value" var1="some value" var2="some value"]
 function include_layouts( $args ) {
     $path = get_stylesheet_directory_uri();
     $layout = isset( $args['layout'] ) ? 'layouts/' . $args['layout'] . '.php' : '';
@@ -138,6 +138,35 @@ add_filter( 'nav_menu_link_attributes', 'add_menu_link_class', 10, 4 );
 
 
 
+/**
+ * Custom_Submenu_Walker class
+ *
+ * Extends WordPress's native Walker_Nav_Menu class to customize submenu HTML output.
+ * Allows developers to add custom CSS classes and styling to submenu lists,
+ * enabling dropdown menus with Tailwind CSS styling without modifying core files.
+ *
+ * @package Custom_Theme
+ * @since 1.0.0
+ */
+
+/**
+ * Generates the opening <ul> tag for submenu lists with custom styling.
+ *
+ * Overrides the default start_lvl() method to inject custom CSS classes into submenu elements.
+ * Respects WordPress item spacing settings and applies Tailwind utility classes for
+ * positioning (absolute, top-full, left-0), sizing (w-48), styling (bg-white, shadow-lg),
+ * and visibility (hidden, group-hover:block, z-50) to create styled dropdown menus.
+ *
+ * The method maintains proper indentation and line breaks based on the item_spacing parameter
+ * to ensure clean, readable HTML output in the frontend markup.
+ *
+ * @since 1.0.0
+ * @param string $output     Passed by reference. Accumulates the generated HTML markup for the submenu list.
+ * @param int    $depth      Current depth level in the menu hierarchy (0 for top-level, increases for nested submenus).
+ * @param array  $args       Menu arguments array containing configuration like item_spacing and theme_location.
+ *
+ * @return void Modifies $output by reference with the opening <ul> tag and custom classes.
+ */
 class Custom_Submenu_Walker extends Walker_Nav_Menu {
     /**
      * Starts the list before the elements are added.
@@ -172,6 +201,34 @@ remove_filter( 'the_content', 'wpautop' );
 remove_filter( 'the_excerpt', 'wpautop' );
 
 
+/**
+ * Converts a WordPress navigation menu into a hierarchical array structure.
+ *
+ * Retrieves menu items from the 'header-menu' and organizes them into a nested array
+ * that supports up to three levels of hierarchy: parent items, child items, and grandchild items.
+ *
+ * @return array An associative array of menu items organized hierarchically. Each item contains:
+ *               - post_name (string): The menu item's post name/slug
+ *               - title (string): The display title of the menu item
+ *               - url (string): The URL the menu item links to
+ *               - ID (int): The unique identifier of the menu item
+ *               - children (array): Nested array of child menu items (same structure as parent)
+ *
+ * @example
+ * $menu = menu_to_display();
+ * // Returns:
+ * // [
+ * //     [
+ * //         'post_name' => 'about',
+ * //         'title' => 'About Us',
+ * //         'url' => 'http://example.com/about',
+ * //         'ID' => 5,
+ * //         'children' => [
+ * //             ['post_name' => 'team', 'title' => 'Our Team', ...]
+ * //         ]
+ * //     ]
+ * // ]
+ */
 function menu_to_display() {
 	$menu_items = wp_get_nav_menu_items('header-menu');
 	$menu_to_display = array();

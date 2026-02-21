@@ -12,8 +12,9 @@
 ?>
 <?php get_header(); ?>
 	<div class="page-content max-w-[1600px!important] mx-auto">
-		<div class="container">
-			<h1 class="page-title"><?php echo get_the_title(get_option( 'page_for_posts' )); ?></h1>
+		<h1 class="page-title py-5"><?php echo get_the_title(get_option( 'page_for_posts' )); ?></h1>
+		<div class="container grid grid-cols-[80%_18%] gap-4 py-5">
+			
 				<div class="blog-section">
 					<?php if ( have_posts() ) { while ( have_posts() ) { the_post(); ?>
 						<article class="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-xs mb-8 transition hover:shadow-sm">
@@ -46,7 +47,13 @@
 					<p>No posts to display</p>
 					<?php } ?>
 				</div>
-				<div class="sidebar-section"><?php get_sidebar('sidebar-blog-archive'); ?></div>
+				<div class="sidebar-section">
+					<?php 
+						if ( is_active_sidebar( 'sidebar-blog-archive' ) ) {
+							dynamic_sidebar( 'sidebar-blog-archive' );
+						}
+					?>
+				</div>
 		</div>
 	</div>
 <?php get_footer(); ?>

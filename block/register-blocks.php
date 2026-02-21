@@ -40,17 +40,14 @@ function admin_enqueue() {
     }
 }
 
-function example_filter_block_categories_when_post_provided( $block_categories, $editor_context ) {
-    if ( ! empty( $editor_context->post ) ) {
-        array_push(
-            $block_categories,
-            array(
-                'slug'  => 'custom-blocks',
-                'title' => __( 'My Custom Blocks', 'custom-blocks-plugins' ),
-                'icon'  => null,
-            )
-        );
-    }
-    return $block_categories;
-}
-add_filter( 'block_categories_all', 'example_filter_block_categories_when_post_provided', 10, 2 );
+function add_block_category( $categories ) {
+    $custom_category = array(
+        array(
+            'slug'  => 'custom-blocks',
+            'title' => __( 'My Custom Blocks', 'custom-blocks-theme' ),
+            'icon'  => null,
+        ),
+    );
+
+    return array_merge( $categories, $custom_category );
+} add_filter( 'block_categories_all', 'add_block_category', 10, 2 );
