@@ -110,7 +110,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_65cdad19ea486",
@@ -203,7 +205,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_6974bcb685d77",
@@ -278,7 +282,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_6990b0abe7683",
@@ -329,7 +335,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_698a035e8bb30",
@@ -419,7 +427,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_6979b891e7bcf",
@@ -634,6 +644,7 @@
                         "collapsed": "",
                         "button_label": "Add Row",
                         "rows_per_page": 20,
+                        "parent_repeater": "field_6979b8a1f9d66",
                         "sub_fields": [
                             {
                                 "key": "field_6979b892134a7",
@@ -652,9 +663,37 @@
                                 "return_format": "array",
                                 "allow_in_bindings": 0,
                                 "parent_repeater": "field_6979b89204117"
+                            },
+                            {
+                                "key": "field_6a4cb945b855b",
+                                "label": "Class",
+                                "name": "class",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 1,
+                                "conditional_logic": [
+                                    [
+                                        {
+                                            "field": "field_6979b892134a7",
+                                            "operator": "!=empty"
+                                        }
+                                    ]
+                                ],
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "bg-teal-600 px-8 py-3 rounded-md font-bold hover:bg-teal-700",
+                                "maxlength": "",
+                                "allow_in_bindings": 0,
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "parent_repeater": "field_6979b89204117"
                             }
-                        ],
-                        "parent_repeater": "field_6979b8a1f9d66"
+                        ]
                     }
                 ]
             }
@@ -677,7 +716,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_6979afe552967",
@@ -811,6 +852,35 @@
                         "return_format": "array",
                         "allow_in_bindings": 0,
                         "parent_repeater": "field_6979b096f9d8f"
+                    },
+                    {
+                        "key": "field_6a4cb2b0cfaa6",
+                        "label": "Class",
+                        "name": "class",
+                        "aria-label": "",
+                        "type": "text",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": [
+                            [
+                                {
+                                    "field": "field_6979b09ff9d90",
+                                    "operator": "!=empty"
+                                }
+                            ]
+                        ],
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "bg-teal-600 px-8 py-3 rounded-md font-bold hover:bg-teal-700",
+                        "maxlength": "",
+                        "allow_in_bindings": 0,
+                        "placeholder": "",
+                        "prepend": "",
+                        "append": "",
+                        "parent_repeater": "field_6979b096f9d8f"
                     }
                 ]
             },
@@ -860,7 +930,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_65cdab4c885c9",
@@ -927,7 +999,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_6989eaa70818f",
@@ -1040,7 +1114,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_6760034045bfc",
@@ -1093,7 +1169,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_67829e9ab2ce1",
@@ -1166,7 +1244,9 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
     },
     {
         "key": "group_6979d11d35abe",
@@ -1220,6 +1300,98 @@
         "active": true,
         "description": "",
         "show_in_rest": 0,
-        "display_title": ""
+        "display_title": "",
+        "allow_ai_access": false,
+        "ai_description": ""
+    },
+    {
+        "key": "post_type_6a3e21f662d9a",
+        "title": "Custom Post Test",
+        "menu_order": 0,
+        "active": true,
+        "post_type": "custom-post-tests",
+        "advanced_configuration": false,
+        "import_source": "",
+        "import_date": "",
+        "allow_ai_access": false,
+        "ai_description": "",
+        "labels": {
+            "name": "Custom Post Test",
+            "singular_name": "Custom Post Tests",
+            "menu_name": "Custom Post Test",
+            "all_items": "All Custom Post Test",
+            "edit_item": "Edit Custom Post Tests",
+            "view_item": "View Custom Post Tests",
+            "view_items": "View Custom Post Test",
+            "add_new_item": "Add Custom Post Tests",
+            "add_new": "Add Custom Post Tests",
+            "new_item": "New Custom Post Tests",
+            "parent_item_colon": "Parent Custom Post Tests:",
+            "search_items": "Search Custom Post Test",
+            "not_found": "No custom post test found",
+            "not_found_in_trash": "No custom post test found in Trash",
+            "archives": "Custom Post Tests Archives",
+            "attributes": "Custom Post Tests Attributes",
+            "featured_image": "",
+            "set_featured_image": "",
+            "remove_featured_image": "",
+            "use_featured_image": "",
+            "insert_into_item": "Insert into custom post tests",
+            "uploaded_to_this_item": "Uploaded to this custom post tests",
+            "filter_items_list": "Filter custom post test list",
+            "filter_by_date": "Filter custom post test by date",
+            "items_list_navigation": "Custom Post Test list navigation",
+            "items_list": "Custom Post Test list",
+            "item_published": "Custom Post Tests published.",
+            "item_published_privately": "Custom Post Tests published privately.",
+            "item_reverted_to_draft": "Custom Post Tests reverted to draft.",
+            "item_scheduled": "Custom Post Tests scheduled.",
+            "item_updated": "Custom Post Tests updated.",
+            "item_link": "Custom Post Tests Link",
+            "item_link_description": "A link to a custom post tests."
+        },
+        "description": "",
+        "public": true,
+        "hierarchical": false,
+        "exclude_from_search": false,
+        "publicly_queryable": true,
+        "show_ui": true,
+        "show_in_menu": true,
+        "admin_menu_parent": "",
+        "show_in_admin_bar": true,
+        "show_in_nav_menus": true,
+        "show_in_rest": true,
+        "rest_base": "",
+        "rest_namespace": "wp\/v2",
+        "rest_controller_class": "WP_REST_Posts_Controller",
+        "menu_position": "",
+        "menu_icon": {
+            "type": "dashicons",
+            "value": "dashicons-admin-post"
+        },
+        "rename_capabilities": false,
+        "singular_capability_name": "post",
+        "plural_capability_name": "posts",
+        "supports": [
+            "title",
+            "editor",
+            "thumbnail",
+            "custom-fields"
+        ],
+        "taxonomies": "",
+        "has_archive": false,
+        "has_archive_slug": "",
+        "rewrite": {
+            "permalink_rewrite": "post_type_key",
+            "with_front": "1",
+            "feeds": "0",
+            "pages": "1"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "can_export": true,
+        "delete_with_user": false,
+        "register_meta_box_cb": "",
+        "enter_title_here": ""
     }
 ]

@@ -24,6 +24,7 @@ $text_alignment = get_field( 'text_alignment' ) ? get_field( 'text_alignment' ) 
 // $postion_x       = get_field( 'postion_x' ) ? get_field( 'postion_x' ) : '50';
 $position_x       = get_field( 'position_x' ) ? get_field( 'position_x' ) : '50';
 $position_y       = get_field( 'position_y' ) ? get_field( 'position_y' ) : '50';
+
 ?>
 
 <section id="hero-banner-<?php echo $block['id']; ?>" class="relative bg-gray-900 h-[<?php echo $max_height; ?>vh] flex items-center">
@@ -47,8 +48,15 @@ $position_y       = get_field( 'position_y' ) ? get_field( 'position_y' ) : '50'
         <h1 class="text-4xl md:text-5xl font-bold mb-6"><?php echo $header; ?></h1>
         <p class="text-xl mb-8"><?php echo $sub_header; ?></p>
         <div class="flex space-x-4 justify-<?php echo $text_alignment; ?>">
-            <a href="#" class="bg-teal-600 px-8 py-3 rounded-md font-bold hover:bg-teal-700">Meet the Team</a>
-            <a href="#" class="bg-white text-teal-900 px-8 py-3 rounded-md font-bold hover:bg-gray-100">Our Services</a>
+            <?php if ( ! empty( $cta_button ) && is_array( $cta_button ) ) : ?>
+                <?php foreach ( $cta_button as $index => $button ) : ?>
+                    <a href="<?php echo  $button['button']['url']; ?>" 
+                    class="<?php echo $button['class']; ?> button-<?php echo $index; ?>"
+                    target="_self">
+                        <?php echo $button['button']['title']; ?>
+                    </a>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 </section>

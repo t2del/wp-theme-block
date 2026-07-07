@@ -231,6 +231,7 @@ remove_filter( 'the_excerpt', 'wpautop' );
  */
 function menu_to_display() {
 	$menu_items = wp_get_nav_menu_items('header-menu');
+
 	$menu_to_display = array();
     foreach( $menu_items as $item ) {
         if($item->menu_item_parent == 0) {

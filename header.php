@@ -13,7 +13,11 @@
 
     </head>
     <body <?php body_class(); ?>>
-
+    <?php
+    if ( function_exists( 'wp_body_open' ) ) {
+		wp_body_open();
+	}
+	?>
     <!-- Topbar -->
     <div class="bg-gray-100 pt-2 border-b text-sm text-white w-full">
         <div class="max-w-[1650px] mx-auto px-4 flex justify-between items-center text-sm text-gray-600 pb-2">

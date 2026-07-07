@@ -36,8 +36,15 @@ $max_height       = get_field( 'max_height' ) ? get_field( 'max_height' ) : '50'
                         <h1 class="text-4xl md:text-5xl font-bold mb-6"><?php echo $slide['header']; ?></h1>
                         <span class="text-xl mb-8"><?php echo $slide['sub_header']; ?></span>
                         <div class="flex space-x-4">
-                            <a href="#" class="bg-teal-600 px-8 py-3 rounded-md font-bold hover:bg-teal-700">Meet the Team</a>
-                            <a href="#" class="bg-white text-teal-900 px-8 py-3 rounded-md font-bold hover:bg-gray-100">Our Services</a>
+                            <?php if ( ! empty( $slide['cta_button'] ) && is_array( $slide['cta_button'] ) ) : ?>
+                                <?php foreach ( $slide['cta_button'] as $index => $button ) : ?>
+                                    <a href="<?php echo  $button['button']['url']; ?>" 
+                                    class="<?php echo $button['class']; ?> button-<?php echo $index; ?>"
+                                    target="_self">
+                                        <?php echo $button['button']['title']; ?>
+                                    </a>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </div>
                     </div>    
                 </li>
@@ -54,18 +61,17 @@ $max_height       = get_field( 'max_height' ) ? get_field( 'max_height' ) : '50'
 </section>
 
 <script>
-    var glide03 = new Glide('.glide-hero-banner-slider', {
-        type: 'slider',
-        focusAt: 'center',
-        perView: 1,
-        autoplay: 6000,
-        animationDuration: 900,
-        gap: 0,
-        classes: {
-            activeNav: '[&>*]:bg-slate-700',
-        },
+var glide03 = new Glide('.glide-hero-banner-slider', {
+    type: 'carousel', // Changed from 'slider' to 'carousel' for infinite looping
+    focusAt: 'center',
+    perView: 1,
+    autoplay: 6000,
+    animationDuration: 900,
+    gap: 0,
+    classes: {
+        activeNav: '[&>*]:bg-slate-700',
+    },
+});
 
-    });
-
-    glide03.mount();
+glide03.mount();
 </script>
